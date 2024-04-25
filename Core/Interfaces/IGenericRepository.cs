@@ -15,5 +15,6 @@ namespace Core.Interfaces
         Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
         // Task ListAsync(ProductsWithTypesAndBrandsSpecification spec);
         Task ListAsync();
+        Task<int> CountAsync(ISpecification<T> spec);
     }
 }
