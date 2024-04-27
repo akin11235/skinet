@@ -1,5 +1,9 @@
 <div class="card h-100 shadow-sm" *ngIf="product">
-  <img src="{{ product.pictureUrl }}" alt="{{ product.name }}" class="img-fluid bg-info"/>
+  <img
+    src="{{ product.pictureUrl }}"
+    alt="{{ product.name }}"
+    class="img-fluid bg-info"
+  />
   <div class="card-body d-flex flex-column">
     <a href="" class="text-decoration-none">
       <h6 class="text-uppercase">
@@ -11,7 +15,12 @@
       <button
         class="btn btn-outline-secondary fa fa-shopping-cart me-2"
       ></button>
-      <button class="btn btn-outline-secondary">View</button>
+      <button
+        routerLink="/shop/{{ product.id }}"
+        class="btn btn-outline-secondary"
+      >
+        View
+      </button>
     </div>
   </div>
 </div>
