@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {
   BrowserModule,
-  provideClientHydration,
+  // provideClientHydration,
 } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -30,10 +30,10 @@ import { loadingInterceptor } from './core/interceptors/loading.interceptor';
     HomeModule,
   ],
   providers: [
-    provideClientHydration(),
+    // provideClientHydration(),
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: loadingInterceptor, multi: true },
-    provideHttpClient(withFetch()),
+    // provideHttpClient(withFetch()),
   ],
   bootstrap: [AppComponent],
 })
