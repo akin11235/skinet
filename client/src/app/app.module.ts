@@ -18,6 +18,7 @@ import { ShopModule } from './shop/shop.module';
 import { HomeModule } from './home/home.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
+import { jwtInterceptor } from './core/interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { loadingInterceptor } from './core/interceptors/loading.interceptor';
     // provideClientHydration(),
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: loadingInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: jwtInterceptor, multi: true },
     // provideHttpClient(withFetch()),
   ],
   bootstrap: [AppComponent],
