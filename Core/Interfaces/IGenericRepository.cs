@@ -14,7 +14,13 @@ namespace Core.Interfaces
         Task<T> GetEntityWithSpec(ISpecification<T> spec);
         Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
         // Task ListAsync(ProductsWithTypesAndBrandsSpecification spec);
-        Task ListAsync();
+        // Task ListAsync();
         Task<int> CountAsync(ISpecification<T> spec);
+        Task GetByIdAsync(object id);
+
+        void Add(T entity);
+
+        void Update(T entity);
+        void Delete(T entity);
     }
 }
