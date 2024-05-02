@@ -20,6 +20,7 @@ export interface Order {
 }
 
 export interface OrderItem {
+  price: number;
   productId: number;
   productName: string;
   pictureUrl: string;
