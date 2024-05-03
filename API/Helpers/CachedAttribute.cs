@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -23,7 +19,7 @@ namespace API.Helpers
 
             var cacheKey = GenerateCacheKeyFromRequest(context.HttpContext.Request);
 
-            var cachedResponse = await cacheService.GetCachedResponseAsync(cacheKey);
+            var cachedResponse = await cacheService.GetCachedResponse(cacheKey);
 
             if(!string.IsNullOrEmpty(cachedResponse))
             {

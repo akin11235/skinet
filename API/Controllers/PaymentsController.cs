@@ -10,8 +10,8 @@ namespace API.Controllers
 {
     public class PaymentsController : BaseAPIController
     {
-        // private const string whSecret = "whsec_88e5401350e3fe067bd9856523419d27b429e9a0e32b1cf61be2a6ae37212256";
-        private const string whSecret = "";
+        private const string whSecret = "whsec_88e5401350e3fe067bd9856523419d27b429e9a0e32b1cf61be2a6ae37212256";
+        // private const string whSecret = "";
         private readonly IPaymentService _paymentService;
         private readonly ILogger<PaymentsController> _logger;
         public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> logger)
@@ -50,14 +50,14 @@ namespace API.Controllers
                 case "payment_intent.succeeded":
                     intent = (PaymentIntent)stripeEvent.Data.Object;
                     order = await _paymentService.UpdateOrderPaymentSucceeded(intent.Id);
-                    _logger.LogInformation("Order updated to payment received: {order.Id}", order.Id);
+                    _logger.LogInformation("Order updated to payment received", order.Id);
                     break;
 
                 case "payment_intent.payment_failed":
                 intent = (PaymentIntent)stripeEvent.Data.Object;
                     _logger.LogInformation("Payment failed: {intent.Id}", intent.Id);
                     order = await _paymentService.UpdateOrderPaymentFailed(intent.Id);
-                    _logger.LogInformation("Order updated to payment failed: {order.Id}", order.Id);
+                    _logger.LogInformation("Order updated to payment failed", order.Id);
                     break;
             }
             return new EmptyResult();

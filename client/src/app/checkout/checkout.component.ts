@@ -17,7 +17,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAddressFromValues();
-    this.getDeliveryMethoValue();
+    this.getDeliveryMethodValue();
   }
 
   checkoutForm = this.fb.group({
@@ -45,7 +45,7 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  getDeliveryMethoValue() {
+  getDeliveryMethodValue() {
     const basket = this.basketService.getCurrentBasketValue();
     if (basket && basket.deliveryMethodId) {
       this.checkoutForm

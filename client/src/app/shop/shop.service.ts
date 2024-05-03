@@ -6,7 +6,6 @@ import { Brand } from '../shared/models/brand';
 import { Type } from '../shared/models/type';
 import { ShopParams } from '../shared/models/shopParams';
 import { Observable, map, of } from 'rxjs';
-import { response } from 'express';
 
 @Injectable({
   providedIn: 'root',
@@ -46,13 +45,11 @@ export class ShopService {
       params = params.append('search', this.shopParams.search);
 
     return this.http
-      .get<Pagination<Product[]>>(this.baseUrl + 'products', {
-        params,
-      })
+      .get<Pagination<Product[]>>(this.baseUrl + 'products', { params })
       .pipe(
         map((response) => {
           this.productCache.set(
-            Object.values(this.setShopParams).join('-'),
+            Object.values(this.shopParams).join('-'),
             response
           );
           this.pagination = response;
